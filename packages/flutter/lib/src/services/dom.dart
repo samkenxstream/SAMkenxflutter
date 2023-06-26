@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:js_interop';
-import 'package:js/js.dart';
 
 /// This file includes static interop helpers for Flutter Web.
 // TODO(joshualitt): This file will eventually be removed,

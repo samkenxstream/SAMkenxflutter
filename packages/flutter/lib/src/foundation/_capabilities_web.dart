@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:js_interop';
-import 'package:js/js.dart';
 
 // This value is set by the engine. It is used to determine if the application is
 // using canvaskit.

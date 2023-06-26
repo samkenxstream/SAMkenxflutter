@@ -127,11 +127,17 @@ class BottomAppBar extends StatefulWidget {
   /// Not used if [shape] is null.
   final double notchMargin;
 
-  /// The color used as an overlay on [color] to indicate elevation.
+  /// A custom color for the Material 3 surface-tint elevation effect.
   ///
-  /// If this is null, no overlay will be applied. Otherwise the
-  /// color will be composited on top of [color] with an opacity related
-  /// to [elevation] and used to paint the background of the [BottomAppBar].
+  /// In Material 3, a "surface tint" with an opacity related to [elevation]
+  /// will be applied to the [BottomAppBar]'s background.
+  /// Use this property to override the default color of that tint.
+  ///
+  /// If this property is null, then [BottomAppBarTheme.surfaceTintColor]
+  /// of [ThemeData.bottomAppBarTheme] is used.
+  /// If that is also null, [ColorScheme.surfaceTint] is used.
+  ///
+  /// Ignored if [ThemeData.useMaterial3] is false.
   ///
   /// The default is null.
   ///
@@ -289,8 +295,6 @@ class _BottomAppBarDefaultsM2 extends BottomAppBarTheme {
 // "END GENERATED" comments are generated from data in the Material
 // Design token database by the script:
 //   dev/tools/gen_defaults/bin/gen_defaults.dart.
-
-// Token database version: v0_162
 
 class _BottomAppBarDefaultsM3 extends BottomAppBarTheme {
   _BottomAppBarDefaultsM3(this.context)
