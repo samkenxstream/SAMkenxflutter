@@ -1,0 +1,87 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Dart
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Note: This workflow uses the latest stable version of the Dart SDK.
+      # You can specify other versions if desired, see documentation here:
+      # https://github.com/dart-lang/setup-dart/blob/main/README.md
+      # - uses: dart-lang/setup-dart@v1
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+
+      - name: Install dependencies
+        run: dart pub get
+
+      # Uncomment this step to verify the use of 'dart format' on each commit.
+      # - name: Verify formatting
+      #   run: dart format --output=none --set-exit-if-changed .
+
+      # Consider passing '--fatal-infos' for slightly stricter analysis.
+      - name: Analyze project source
+        run: dart analyze
+
+      # Your project will need to have tests in test/ and a dependency on
+      # package:test for this step to succeed. Note that Flutter projects will
+      # want to change this to 'flutter test'.
+      - name: Run tests
+        run: dart test
+      - name: Setup Java JDK
+
+  uses: actions/setup-java@v1.4.4
+
+  with:
+
+    # The Java version to make available on the path. Takes a whole or semver Java version, or 1.x syntax (e.g. 1.8 => Java 8.x). Early access versions can be specified in the form of e.g. 14-ea, 14.0.0-ea, or 14.0.0-ea.28
+
+    java-version: 
+
+    # The package type (jre, jdk, jdk+fx)
+
+    java-package: # optional, default is jdk
+
+    # The architecture (x86, x64) of the package.
+
+    architecture: # optional, default is x64
+
+    # Path to where the compressed JDK is located. The path could be in your source repository or a local path on the agent.
+
+    jdkFile: # optional
+
+    # ID of the distributionManagement repository in the pom.xml file. Default is `github`
+
+    server-id: # optional, default is github
+
+    # Environment variable name for the username for authentication to the Apache Maven repository. Default is $GITHUB_ACTOR
+
+    server-username: # optional, default is GITHUB_ACTOR
+
+    # Environment variable name for password or token for authentication to the Apache Maven repository. Default is $GITHUB_TOKEN
+
+    server-password: # optional, default is GITHUB_TOKEN
+
+    # Path to where the settings.xml file will be written. Default is ~/.m2.
+
+    settings-path: # optional
+
+    # GPG private key to import. Default is empty string.
+
+    gpg-private-key: # optional
+
+    # Environment variable name for the GPG private key passphrase. Default is $GPG_PASSPHRASE.
+
+    gpg-passphrase: # optional
